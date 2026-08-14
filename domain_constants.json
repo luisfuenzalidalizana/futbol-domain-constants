@@ -143,5 +143,37 @@
     "playerStatus": {
         "1": "JUGADOR_ACTIVO",
         "2": "RETIRADO"
+    },
+    "optionsInstances" : {
+        "1": "FASE REGULAR (LIGA)",
+        "2": "OCTAVOS DE FINAL",
+        "3": "CUARTOS DE FINAL",
+        "4": "SEMIFINAL",
+        "5": "FINAL",
+        "6": "DIECISEISAVOS DE FINAL",
+        "7": "PARTIDO 1 (FASE DE GRUPOS)",
+        "8": "PARTIDO 2 (FASE DE GRUPOS)",
+        "9": "PARTIDO 3 (FASE DE GRUPOS)",
+        "10": "PARTIDO 4 (FASE DE GRUPOS)",
+        "11": "PARTIDO 5 (FASE DE GRUPOS)",
+        "12": "PARTIDO 6 (FASE DE GRUPOS)",
+        "13": "FASE PREVIA 1 (IDA)",
+        "14": "FASE PREVIA 1 (VUELTA)",
+        "15": "FASE PREVIA 2 (IDA)",
+        "16": "FASE PREVIA 2 (VUELTA)",
+        "17": "FASE PREVIA 3 (IDA)",
+        "18": "FASE PREVIA 3 (VUELTA)",
+        "19": "FASE PREVIA (PARTIDO ÚNICO)"
+    },
+
+    "optionsStages": {
+        "1": "FASE REGULAR (LIGA)",
+        "2": "FASE DE GRUPOS",
+        "3": "FASE ELIMINATORIA",
+        "4": "FASE REGIONAL (ZONA NORTE)",
+        "5": "FASE REGIONAL (ZONA CENTRO NORTE)",
+        "6": "FASE REGIONAL (ZONA CENTRO SUR)",
+        "7": "FASE REGIONAL (ZONA SUR)",
+        "8": "FASES PREVIAS (CLASIFICATORIAS)"
     }
 }
