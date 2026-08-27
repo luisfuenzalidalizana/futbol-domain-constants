@@ -142,7 +142,8 @@
     },
     "playerStatus": {
         "1": "JUGADOR_ACTIVO",
-        "2": "RETIRADO"
+        "2": "RETIRADO",
+        "0": "ELIMINADO"
     },
     "optionsInstances" : {
         "1": "FASE REGULAR (LIGA)",
