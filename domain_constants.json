@@ -138,6 +138,10 @@
         "8": {
             "code": "COPA_SUDAMERICANA",
             "label": "Torneo CONMEBOL (Formato Sudamericana)"
+        },
+        "9": {
+            "code": "PLAYOFFS",
+            "label": "Playoffs"
         }
     },
     "playerStatus": {
