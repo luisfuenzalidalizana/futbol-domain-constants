@@ -144,6 +144,10 @@
         "9": {
             "code": "PLAYOFFS",
             "label": "Playoffs"
+        },
+        "10": {
+            "code": "COPA_SUDAMERICANA_ELIMINATORIA",
+            "label": "Copa Sudamericana (Eliminatoria tipo 2011)"
         }
     },
     "playerStatus": {
