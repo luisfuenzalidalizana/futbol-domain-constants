@@ -49,6 +49,11 @@ NUMERIC_GROUPS = [
     ("playerStatus", "PlayerStatus"),
 ]
 
+CODE_LABEL_GROUPS = [
+    ("seasonTypes", "SeasonType"),
+    ("leagueCategories", "LeagueCategory"),
+]
+
 
 def sanitize(raw: str) -> str:
     name = re.sub(r"[^0-9A-Za-z]+", "_", raw.strip()).strip("_").upper()
@@ -87,10 +92,10 @@ def build_numeric_group(data: dict, key: str):
     return items
 
 
-def build_season_types(data: dict):
+def build_coded_group(data: dict, key: str):
     items = [
         (payload["code"], int(str_code), payload["label"])
-        for str_code, payload in data["seasonTypes"].items()
+        for str_code, payload in data[key].items()
     ]
     items.sort(key=lambda t: t[1])
     return items
@@ -126,17 +131,21 @@ def render_python(data: dict, source_label: str) -> str:
         lines.append("")
         lines.append("")
 
-    season_items = build_season_types(data)
-    lines.append("class SeasonType(IntEnum):")
-    for name, code, _label in season_items:
-        lines.append(f"    {name} = {code}")
-    lines.append("")
-    lines.append("SEASON_TYPE_LABELS: Dict[int, str] = {")
-    for _name, code, label in season_items:
-        lines.append(f"    {code}: {label!r},")
-    lines.append("}")
-    lines.append("")
-    lines.append("")
+    for json_key, enum_name in CODE_LABEL_GROUPS:
+        if json_key not in data:
+            continue
+        coded_items = build_coded_group(data, json_key)
+        lines.append(f"class {enum_name}(IntEnum):")
+        for name, code, _label in coded_items:
+            lines.append(f"    {name} = {code}")
+        lines.append("")
+        labels_name = labels_const_name(enum_name)
+        lines.append(f"{labels_name}: Dict[int, str] = {{")
+        for _name, code, label in coded_items:
+            lines.append(f"    {code}: {label!r},")
+        lines.append("}")
+        lines.append("")
+        lines.append("")
 
     ui_colors = build_ui_colors(data)
     lines.append("class MatchColor(str, Enum):")
@@ -184,17 +193,21 @@ def render_typescript(data: dict, source_label: str) -> str:
         lines.append("};")
         lines.append("")
 
-    season_items = build_season_types(data)
-    lines.append("export enum SeasonType {")
-    for name, code, _label in season_items:
-        lines.append(f"  {name} = {code},")
-    lines.append("}")
-    lines.append("")
-    lines.append("export const SEASON_TYPE_LABELS: Record<number, string> = {")
-    for _name, code, label in season_items:
-        lines.append(f"  {code}: {json.dumps(label, ensure_ascii=False)},")
-    lines.append("};")
-    lines.append("")
+    for json_key, enum_name in CODE_LABEL_GROUPS:
+        if json_key not in data:
+            continue
+        coded_items = build_coded_group(data, json_key)
+        lines.append(f"export enum {enum_name} {{")
+        for name, code, _label in coded_items:
+            lines.append(f"  {name} = {code},")
+        lines.append("}")
+        lines.append("")
+        labels_name = labels_const_name(enum_name)
+        lines.append(f"export const {labels_name}: Record<number, string> = {{")
+        for _name, code, label in coded_items:
+            lines.append(f"  {code}: {json.dumps(label, ensure_ascii=False)},")
+        lines.append("};")
+        lines.append("")
 
     ui_colors = build_ui_colors(data)
     keys = [k for k, _ in ui_colors]
