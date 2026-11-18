@@ -186,27 +186,5 @@
         "6": "FASE REGIONAL (ZONA CENTRO SUR)",
         "7": "FASE REGIONAL (ZONA SUR)",
         "8": "FASES PREVIAS (CLASIFICATORIAS)"
-    },
-    "leagueCategories": {
-        "1": {
-            "code": "PRIMERA_DIVISION",
-            "label": "Primera División"
-        },
-        "2": {
-            "code": "PRIMERA_B",
-            "label": "Primera B"
-        },
-        "3": {
-            "code": "COPA_NACIONAL",
-            "label": "Copa Nacional"
-        },
-        "4": {
-            "code": "INTERNACIONAL",
-            "label": "Torneo Internacional"
-        },
-        "5": {
-            "code": "OTROS",
-            "label": "Otros Oficiales"
-        }
     }
 }
